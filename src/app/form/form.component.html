@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+  <h1>Pipe</h1>
+  <div formArrayName="inputArray" *ngFor="let item of form.controls['inputArray'] | loopInnerControls; let index = index">
+    {{index}}
+    <input [formControlName]="index" [value]="item.value">
+    <button (click)="delete(index)">Delete</button>
+  </div>
+  <h1>Get</h1>
+  <div formArrayName="inputArray" *ngFor="let item of formArrayWithGet; let index = index">
+    {{index}}
+    <input [formControlName]="index" [value]="item.value">
+    <button (click)="delete(index)">Delete</button>
+  </div>
+  <button (click)="addInput()">Add Input</button>
+
+  <div>
+    {{form.value | json}}
+  </div>
+</form>
